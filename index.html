@@ -14,10 +14,49 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./include/css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <style>
+      body {
+        min-height: 1000px;
+        background-color: #ededed;
+      }
+
+      .logo-title {
+        font-family: "Lobster", cursive;
+      }
+
+      .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        background-color: gray;
+      }
+      .nav-link,
+      .nav-link:focus, 
+      .nav-link:hover {
+        color: gray;
+      }
+
+      .portafolio-grid-item img {
+        max-height: 220px;
+        object-fit: cover;
+        object-position: top center;
+      }
+      .portafolio-grid-item img:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+
+      #btn-back-to-top {
+        bottom: 10px;
+        right: 20px;
+        opacity: 0.6;
+      }
+      #btn-back-to-top:hover {
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
+    <!-- Header -->
     <header class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="">
@@ -33,9 +72,7 @@
         </button>
         <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5 pe-5 align-items-lg-center">
-            <li class="nav-item">
-
-              <!-- Botón de apertura del Modal -->
+            <li class="nav-item"> <!-- Botón de apertura del Modal -->
               <button
                     class="btn btn-sm btn-success"    
                     type="button"                     
@@ -44,47 +81,6 @@
               >
               Create a new post
               </button>
-
-              <!-- Contenedor modal -->
-              <div 
-                    class="modal fade"
-                    id="modal-1"
-                    tabindex="-1"
-                    aria-hidden="true"
-                    aria-labelledby="label-modal-1"
-              >
-
-              <!-- caja de diálogo -->
-              <div class="modal-dialog modal-dialog-scrollable">
-                  <!-- contenido de la caja -->
-                  <div class="modal-content">
-                      <!-- cuerpo de la caja -->
-                      <div class="modal-body">
-                          <div class="row">
-                            <div class="col-12">
-                              <textarea class="form-control border-dark shadow-none" name="textarea-1" id="textarea-1"></textarea>
-                            </div>
-                            <div class="col-12 border-dark mt-3">
-                              <svg onclick="JavaScript: alert('Camera!');" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera-fill border p-1 rounded-2" viewBox="0 0 16 16">
-                                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
-                              </svg>
-
-                              <svg onclick="JavaScript: alert('Map!');" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt-fill border p-1 rounded-2" viewBox="0 0 16 16">
-                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-                              </svg>
-                            </div>
-                          </div>
-                      </div>
-                      <!-- pie de página de la caja -->
-                      <div class="modal-footer">
-                          <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal" >Cancel</button>
-                          <button class="btn btn-sm btn-success" type="button" data-bs-dismiss="modal" onclick="JavaScript: alert('Publish!');">Publish</button>
-                      </div>
-                  </div>
-              </div>
-
-
             </li>
             
             <li class="nav-item dropdown">
@@ -105,342 +101,461 @@
         </div>
       </div>
     </header>
-
-    <nav class="nav container justify-content-center">
-      <div class="row p-2">
-        <div class="col d-flex gap-2">
-          <button 
-            type="button" 
-            class="btn btn-sm btn-secondary d-flex align-items-center py-2"
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Grid view"
-            onclick="JavaScript: switch_view('grid');"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
-              <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z"/>
-            </svg>
-          </button>
-
-          <button 
-            type="button" 
-            class="btn btn-sm btn-secondary d-flex align-items-center py-2"
-            data-bs-toggle="tooltip"
-            data-bs-placement="bottom"
-            title="Detailed view"
-            onclick="JavaScript: switch_view('column');"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
-              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
     
-    <main>
-      <div class="container-fluid p-0">
-        <div class="row g-0 justify-content-between" id="portafolio">
-          
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My first photo</h6>
-              <span class="text-muted">1/9</span>              
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-1" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
 
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/1.jpg">
+          <!-- Modal Body-->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <textarea class="form-control border-dark shadow-none" name="textarea-1" id="textarea-1"></textarea>
+              </div>
 
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">23 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
+              <div class="col-12 border-dark mt-3">
+                <svg onclick="JavaScript: alert('Camera!');" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera-fill border p-1 rounded-2" viewBox="0 0 16 16">
+                  <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                </svg>
 
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
+                <svg onclick="JavaScript: alert('Map!');" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt-fill border p-1 rounded-2" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
               </div>
             </div>
           </div>
 
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My second photo</h6>
-              <span class="text-muted">2/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/2.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">203 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My thirt photo</h6>
-              <span class="text-muted">3/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/3.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">3 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My quarter photo</h6>
-              <span class="text-muted">4/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/4.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">50 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My fifth photo</h6>
-              <span class="text-muted">5/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/5.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">1 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My sixth photo</h6>
-              <span class="text-muted">6/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/gif.gif">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">860 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My seventh photo</h6>
-              <span class="text-muted">7/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/6.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">35 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My eighth photo</h6>
-              <span class="text-muted">8/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/7.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">2043 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 d-flex portafolio-item flex-column">
-            <div class="d-flex justify-content-between align-items-center bg-light rounded-top p-2 d-none items-description">
-              <h6 class="fw-bold m-0">My last photo</h6>
-              <span class="text-muted">9/9</span>              
-            </div>
-
-            <img class="w-100 img-fluid border border-1 border-white portafolio-img" src="./img/8.jpg">
-
-            <div class="bg-light rounded-bottom mb-4 p-2 d-none items-description-footer">
-              <p class="d-inline-block fw-bold">1423 Likes</p>
-              <p>Culpa ullamco labore do aliquip nostrud quis amet reprehenderit.</p>
-
-              <div class="d-flex justify-content-between pb-1">
-                <div class="d-flex align-items-center">
-                  <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: alert('Like!');">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                    </svg>
-                  </button>
-
-                  <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
-                </div>
-                
-                <button type="button" class="btn shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
+          <!-- Modal Footer-->
+          <div class="modal-footer">
+            <button class="btn btn-sm btn-secondary" type="button" data-bs-dismiss="modal" >Cancel</button>
+            <button class="btn btn-sm btn-success" type="button" data-bs-dismiss="modal" onclick="JavaScript: alert('Publish!');">Publish</button>
           </div>
 
         </div>
       </div>
-    </main> 
+    </div>
 
+    <!-- Switch Pills -->
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <ul class="nav nav-pills m-2" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation" data-bs-toggle="tooltip" data-bs-placement="top" title="Grid view">
+              <button 
+                class="nav-link px-2 py-1" 
+                id="grid-view-tab" 
+                data-bs-toggle="pill" 
+                data-bs-target="#grid-view" 
+                type="button" 
+                role="tab" 
+                aria-controls="grid-view" 
+                aria-selected="true"
+              >
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x2-gap-fill" viewBox="0 0 16 16">
+                  <path d="M1 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V4zM1 9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9z"/>
+                </svg>
+              
+              </button>
+            </li>
+            
+            <li class="nav-item" role="presentation" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Column view">
+              <button 
+                class="nav-link active px-2 py-1" 
+                id="column-view-tab" 
+                data-bs-toggle="pill" 
+                data-bs-target="#column-view" 
+                type="button" 
+                role="tab" 
+                aria-controls="column-view" 
+                aria-selected="true"
+              >
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/>
+                </svg>
+              
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid g-0 tab-content overflow-hidden" id="pills-tabContent">
+      <!-- Grid view -->
+      <div class="tab-pane fade" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+        <div class="row g-1">
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/1.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/2.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/3.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/4.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/5.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/gif.gif">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/6.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/7.jpg">
+          </div>      
+          <div class="col-12 col-md-4 portafolio-grid-item mt-1">
+            <img class="w-100 img-fluid" src="./img/8.jpg">
+          </div>      
+          
+        </div>
+      </div>      
+
+      <!-- Column view -->
+      <div class="tab-pane fade show active" id="column-view" role="tabpanel" aria-labelledby="column-view-tab">
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My first photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/1.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">203 Likes</p>
+                <p>🔥 Ullamco consectetur aliqua deserunt minim.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My second photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">2/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/2.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">12 Likes</p>
+                <p>Quis adipisicing consequat elit sit veniam proident elit. Sint eiusmod aliqua qui voluptate ipsum esse sunt voluptate consequat ex pariatur. Dolor qui non eu nostrud. Culpa eiusmod reprehenderit culpa Lorem magna ex velit. Reprehenderit nulla deserunt veniam consequat velit mollit laboris magna irure dolore cillum. Et sit cillum dolor nisi pariatur eu enim voluptate dolore aliquip.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My third photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">3/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/3.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">552 Likes</p>
+                <p>Enim anim culpa proident occaecat eiusmod aute amet est nulla labore laborum quis nisi.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My quarter photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">4/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/4.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">123 Likes</p>
+                <p>Ipsum velit nostrud cillum esse do Lorem officia nulla ad incididunt sit dolore. Proident commodo sit nostrud duis tempor consectetur est reprehenderit consequat quis. Ut duis in minim proident elit id culpa.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My fifth photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/5.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">48 Likes</p>
+                <p>Non tempor proident tempor do occaecat elit amet esse duis nisi officia commodo. Irure irure duis aliqua dolore in qui reprehenderit sit mollit Lorem proident nisi qui elit. Ut sit consectetur velit occaecat irure. Aliquip quis quis est velit elit pariatur nostrud adipisicing est mollit cillum Lorem incididunt.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My sixth photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/gif.gif">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">666 Likes</p>
+                <p>Ullamco sit sunt id ut minim est incididunt voluptate.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My seventh photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/6.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">7548 Likes</p>
+                <p>Magna cillum ex et ex labore occaecat do minim minim velit. Nostrud elit quis officia ex. Exercitation id ullamco qui excepteur mollit proident laborum cillum ad ullamco voluptate nostrud est reprehenderit.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My eighth photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/7.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">88 Likes</p>
+                <p>Voluptate ut exercitation non mollit irure eiusmod non incididunt adipisicing cupidatat quis.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="col-11 col-md-9 col-lg-6">
+            <div class="card border-0">
+              <div class="card-header border-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0">My ninth photo</h5>
+                <h6 class="card-title m-0 text-muted fw-normal">1/9</h6>
+              </div>
+              <div class="card-body p-0">
+                <img class="w-100 img-fluid p-0" src="./img/8.jpg">
+              </div>
+              <div class="card-footer border-0">
+
+                <p class="fw-bold">203 Likes</p>
+                <p>Lorem est ipsum adipisicing ut esse sint esse exercitation deserunt aliqua. Laboris aliqua id dolor laborum consequat nulla aute fugiat elit enim enim. Exercitation dolor ex tempor sunt cupidatat do consequat do tempor ipsum voluptate quis. Aliqua commodo occaecat cillum voluptate et. Officia velit reprehenderit esse deserunt officia. Id deserunt velit consectetur elit adipisicing ullamco labore magna.</p>
+
+                <div class="d-flex justify-content-between align-items-center py-2">
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-sm btn-outline-danger shadow-none" onclick="JavaScript: like_post(this);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                      </svg>
+                    </button>
+
+                    <input type="text" class="form-control border border-0 bg-light shadow-none" placeholder="Comment...">
+                  </div>
+                  
+                  <button type="button" class="btn shadow-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>   
+        </div>
+    </div>      
+        
+    <!-- Back to Top button-->
     <button title="Back to top" type="button" class="btn btn-dark position-fixed shadow-none" id="btn-back-to-top" onclick="JavaScript: back_to_top();">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
       </svg>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./include/js/main.js"></script>
   </body>
 </html>
