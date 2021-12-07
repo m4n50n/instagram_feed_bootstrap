@@ -1,15 +1,20 @@
-# The Instagram Photo Feed (con Bootstrap)
+# ![4Geeks Logo](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=4geeks,16) The Instagram Photo Feed with Bootstrap 
 
-_Construir un website que replique el gif *./preview.gif* usando **Bootstrap**._
+💻*Create a website with **Bootstrap** that replicates the gif "**./preview.gif**"*
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/html-hello.git)
+
+## What to do next?
+
+Running a web-server using the following command:
+
+```sh
+$ pip3 install flask && python3 server.py
+```
+
+
 
 ## Live Demo ✅
 ↗ https://raw.githack.com/m4n50n/instagram_feed_bootstrap/main/index.html<br>
-
-## Fuentes consultadas 📌
-
-```text
-↗ https://learn.breatheco.de/course/full-stack.v4/1/p/instagram-feed-bootstrap
-↗ https://github.com/breatheco-de/exercise-instagram-feed-bootstrap
-```
 
 💻 _Jose Clemente García Rodríguez_ (https://github.com/m4n50n)
