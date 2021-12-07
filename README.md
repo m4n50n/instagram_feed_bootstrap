@@ -1,12 +1,10 @@
 # ![4Geeks Logo](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=4geeks,16) The Instagram Photo Feed with Bootstrap
 
-💻*Create a website with **Bootstrap** that replicates the gif "**./preview.gif**"*
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/html-hello.git)
+✏ *Create a website with **Bootstrap** that replicates the gif "**./preview.gif**"*
 
 ## What to do next?
 
-Running a web-server using the following command:
+📄 Running a web-server using the following command to preview the project:
 
 ```sh
 pip3 install flask && python3 server.py
