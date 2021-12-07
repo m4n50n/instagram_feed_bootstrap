@@ -21,25 +21,40 @@
         min-height: 800px;
         background-color: #ededed;
       }
+
       .logo-title {
         font-family: 'Lobster', cursive;
       }
+
       .portafolio-item-column {
         width: 75%;
       }
+
       .portafolio-item-column img {
         max-height: 100%;
         border: none !important;
       }
+
       .portafolio-img {
         max-height: 320px;
         object-fit: cover;
         object-position: top center;
       }
+
       #portafolio > div:hover img {
         opacity: 0.7;
         cursor: pointer;
       }    
+
+      #btn-back-to-top {
+        bottom: 10px;
+        right: 20px;
+        opacity: .6;
+      }
+
+      #btn-back-to-top:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -459,8 +474,15 @@
       </div>
     </main> 
 
+    <button type="button" class="btn btn-dark position-fixed" id="btn-back-to-top" onclick="JavaScript: back_to_top();">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+      </svg>
+    </button>
+
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script>
+      // Tooltips
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -468,6 +490,7 @@
 
       // Switch view
       const switch_view = (view) => {
+        // remove classess
         let classes = ["flex-row", "flex-column", "justify-content-between", "align-items-center", "row-cols-1"];
         let element =  document.getElementById("portafolio"); 
 
@@ -475,6 +498,7 @@
           element.classList.remove(value);
         })
 
+        // add classes
         switch (view) {
           case "grid":
             element.classList.add("justify-content-between");
@@ -495,6 +519,7 @@
           }
         }
 
+        // show / hide img header / footer
         items = document.getElementsByClassName("items-description");
         items_footer = document.getElementsByClassName("items-description-footer");
 
@@ -512,6 +537,11 @@
             items_footer[i].setAttribute("style", "display: block !important");
           }
         }
+      }
+
+      const back_to_top = () =>{
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       }
     </script>
   </body>
