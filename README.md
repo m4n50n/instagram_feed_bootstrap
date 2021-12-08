@@ -10,7 +10,27 @@
 pip3 install flask && python3 server.py
 ```
 
-## Live Demo ✅
+## Sources 📌
+
+<https://learn.breatheco.de/course/full-stack.v4/1/p/instagram-feed-bootstrap>
+<https://github.com/breatheco-de/exercise-instagram-feed-bootstrap>
+<https://getbootstrap.com/>
+
+## Used Bootstrap components
+
+```text
+Buttons
+Cards
+Close button (in tooltips)
+Collapse
+Dropdowns
+Modal
+Navbar
+Toasts (in switch pills -hover-)
+Tooltips (after pressing any post like button)
+```
+
+## Direct live demo 🎬
 
 <https://raw.githack.com/m4n50n/instagram_feed_bootstrap/main/index.html>
 

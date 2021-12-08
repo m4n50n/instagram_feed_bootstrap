@@ -137,6 +137,16 @@
       </div>
     </div>
 
+    <!-- Toast -->
+    <div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 11;">
+      <div class="toast bg-light" id="like-toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body" id="like-toast-body"></div>
+          <button type="button" class="btn-close me-2 m-auto shadow-none" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
     <!-- Switch Pills -->
     <div class="container">
       <div class="row">
@@ -184,6 +194,7 @@
       </div>
     </div>
 
+    <!-- Content -->
     <div class="container-fluid g-0 tab-content overflow-hidden" id="pills-tabContent">
       <!-- Grid view -->
       <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
@@ -545,7 +556,8 @@
             </div>
           </div>   
         </div>
-    </div>      
+      </div>    
+    </div>  
         
     <!-- Back to Top button-->
     <button title="Back to top" type="button" class="btn btn-dark position-fixed shadow-none" id="btn-back-to-top" onclick="JavaScript: back_to_top();">
