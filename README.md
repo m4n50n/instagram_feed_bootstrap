@@ -1,6 +1,6 @@
-# ![4Geeks Logo](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=4geeks,16) The Instagram Photo Feed with Bootstrap
+# ![4Geeks Logo](http://assets.breatheco.de/apis/img/images.php?blob&random&cat=icon&tags=4geeks,16) The Instagram Photo Feed (with Bootstrap)
 
-✏ *Create a website with **Bootstrap** similar to **./preview.gif***
+✏ *Create a website with **Bootstrap** similar to **./preview.gif***.
 
 ## What to do next?
 
