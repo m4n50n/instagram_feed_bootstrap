@@ -4,7 +4,7 @@
 
 ## What to do next?
 
-📄 Running a web-server using the following command to preview the project:
+📄 Running a web-server using the following command in the **Gitpod workspace** terminal to preview the project:
 
 ```sh
 pip3 install flask && python3 server.py
