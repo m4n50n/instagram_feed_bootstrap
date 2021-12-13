@@ -28,8 +28,8 @@ Collapse
 Dropdowns
 Modal
 Navbar
-Toasts (in switch pills -hover-)
-Tooltips (after pressing any post like button)
+Toasts (switch pills - on hover )
+Tooltips (posts like button - on click)
 ```
 
 ## Direct live demo 🎬
